@@ -7,7 +7,7 @@ jobs:
    runs-on: ubuntu-latest
  
    steps:
-     - name: executing remote ssh commands using password
+     - name: executing on remote server using ssh key
        uses: appleboy/ssh-action@v0.1.9
        with:
          host: ${{ secrets.SSH_HOST }}
@@ -16,3 +16,4 @@ jobs:
          script: |
           whoami
           ls -al
+          python3 test.py
