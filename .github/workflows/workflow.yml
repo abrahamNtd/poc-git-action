@@ -17,3 +17,4 @@ jobs:
           whoami
           ls -al
           python3 test.py
+          ./test.sh
