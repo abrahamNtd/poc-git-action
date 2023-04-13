@@ -1,16 +1,16 @@
-name: Build and test of Java Project
+name: Testing the basic communication between the runner and the server
  
 on: [push]
  
 jobs:
- build:
+ ssh-conection:
    runs-on: ubuntu-latest
  
    steps:
-     - uses: actions/checkout@v2
-     - name: Set up JDK 1.8
-       uses: actions/setup-java@v1
+     - name: executing remote ssh commands using password
+       uses: appleboy/ssh-action@v0.1.9
        with:
-         java-version: 1.8
-     - name: Build with Maven
-       run: mvn -B package --file pom.xml
+         host: ${{ secrets.SSH_HOST }}
+         username: ${{ secrets.SSH_USER }}
+         key: ${{ secrets.SSH_KEY }}
+         script: whoami
