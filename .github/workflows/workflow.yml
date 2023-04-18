@@ -16,10 +16,12 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: 'src'
-      
+      - name: Archive Release
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r release.zip src
       - name: Testing artifact
         run: |
-          sudo apt install zip unzip
           pwd
           ls -lt 
       - name: executing on remote server using ssh key . . .
