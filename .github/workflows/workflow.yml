@@ -20,4 +20,13 @@ jobs:
       - name: Testing artifact
         run: |
           pwd
-          ls -lt
+          ls -lt 
+      - name: executing on remote server using ssh key . . .
+        uses: appleboy/ssh-action@v0.1.9
+        with:
+         host: ${{ secrets.SSH_HOST }}
+         username: ${{ secrets.SSH_USER }}
+         key: ${{ secrets.SSH_KEY }}
+         script: |
+          python3 test.py
+          ./test.sh
