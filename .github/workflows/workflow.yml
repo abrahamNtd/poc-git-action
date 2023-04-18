@@ -1,13 +1,28 @@
-name: Testing the basic communication between the runner and the server
- 
-on: [push]
- 
+ame: CI Testing the basic communication between the runner and the server
+
+on:
+  push:
+    branches: [ "feature/init-conection" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
 jobs:
- ssh-conection:
-   runs-on: ubuntu-latest
- 
-   steps:
-     - name: executing on remote server using ssh key . . .
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonning a repository
+        uses: actions/checkout@v3
+        with:
+          path: 'src'
+      
+      - name: Testing artifact
+        run: |
+          sudo apt install zip unzip
+          pwd
+          ls -lt 
+      - name: executing on remote server using ssh key . . .
        uses: appleboy/ssh-action@v0.1.9
        with:
          host: ${{ secrets.SSH_HOST }}
@@ -16,4 +31,3 @@ jobs:
          script: |
           python3 test.py
           ./test.sh
-          
