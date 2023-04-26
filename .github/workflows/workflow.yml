@@ -13,5 +13,7 @@ jobs:
           path: 'src'
       - name: Testing artifact
         run: |
+          ls -lt src
+          cd src
           pwd
-          ls -lt 
+          ls -lt
