@@ -2,8 +2,6 @@ name: CI Testing the basic communication between the runner and the server
 on:
   push:
     branches: [ "feature/init-conection" ]
-  pull_request:
-    branches: [ "main" ]
   workflow_dispatch:
 jobs:
   deploy:
