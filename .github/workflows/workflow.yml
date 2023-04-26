@@ -1,0 +1,17 @@
+name: CI Testing the basic communication between the runner and the server
+on:
+  push:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonning a repository
+        uses: actions/checkout@v3
+        with:
+          path: 'src'
+      - name: Testing artifact
+        run: |
+          ls -lt src
+          cd src
+          pwd
+          ls -lt
