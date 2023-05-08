@@ -1,0 +1,15 @@
+name: Integration Test
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Self test
+        id: selftest
+
+        uses: abrahamNtd/poc-git-action@feature/docker_action
+
+      - name: Check outputs
+        run: |
+          test "${{ steps.selftest.outputs.myOutput }}" == "Hello world"
